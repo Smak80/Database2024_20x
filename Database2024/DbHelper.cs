@@ -60,5 +60,21 @@ namespace Database2024
             }
             return users;
         }
+
+        public static long GetUsersCount()
+        {
+            try
+            {
+                var cmd = Conn.CreateCommand();
+                cmd.CommandText = "SELECT COUNT(id) FROM `full_users`;";
+                var res = cmd.ExecuteScalar();
+                if (res is long r) return r;
+                return 0;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

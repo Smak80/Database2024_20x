@@ -73,10 +73,13 @@ namespace Database2024
 
         private void LoadUsers()
         {
-            _users.Clear();
-            foreach (var user in DbHelper.LoadAll())
+            if (DbHelper.GetUsersCount() > 0)
             {
-                _users.Add(user);
+                _users.Clear();
+                foreach (var user in DbHelper.LoadAll())
+                {
+                    _users.Add(user);
+                }
             }
         }
     }
